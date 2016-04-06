@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="DoraMovie.Site2" %>
+<%@ Register TagPrefix="ascx" TagName="foot" Src="~/PageFoot.ascx" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+        <%=Application["title"] %></title>
+    <link href="/css/css.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="<%=Application["keyword"] %>">
+    <meta name="description" content="<%=Application["description"] %>">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" onkeypress="return KeyDown()">
+    <header class="global-nav">
+        <div style="float:left">
+        <label class="icon search" for="search">
+        </label>
+        <input type="search" class="insearch" id="search" placeholder="搜索..." onkeypress="clickButton()" style="border-bottom:1px solid #ccc">
+        </div>
+         <%--下拉框式的导航栏--%>
+            <div class="pw-menu">
+                <ul>
+                    <li class="pw_menu-item"><a href="/">首页</a></li>
+                    <li class="pw_menu-item"><a href="###">地区分类</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-31914" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31914"><a href="/guojia-中国">中国</a></li>
+                            <li id="Li11" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31914"><a href="/guojia-欧美">欧美</a></li>
+                            <li id="menu-item-31915" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31915"><a href="/guojia-英国">英国</a></li>
+                            <li id="menu-item-31916" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31916"><a href="/guojia-美国">美国</a></li>
+                            <li id="Li1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31916"><a href="/guojia-日本">日本</a></li>
+                            <li id="Li10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31916"><a href="/guojia-法国">法国</a></li>
+                            <li id="Li2" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31916"><a href="/guojia-澳大利亚">澳大利亚</a></li>
+                            <li id="Li3" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31916"><a href="/guojia-德国">德国</a></li>
+                        </ul>
+                    </li>
+                    <li class="pw_menu-item"><a href="/class-动作">动作</a></li>
+                    <li class="pw_menu-item"><a href="/class-爱情">爱情</a></li>
+                    <li class="pw_menu-item"><a href="/class-喜剧">喜剧</a></li>
+                    <li class="pw_menu-item"><a href="/class-科幻">科幻</a></li>
+                    <li class="pw_menu-item"><a href="/class-恐怖">恐怖</a></li>
+                    <li class="pw_menu-item"><a href="/class-动画">动画</a></li>
+                    <%--<li class="pw_menu-item"><a href="/class-限制" style="color:Red;">限制级</a></li>--%>
+                    <li class="pw_menu-item"><a href="/class-3D">3D电影</a></li>
+                </ul>
+            </div>
+    </header>
+    <main class="layout-grid">
+	  <div class="row clearfix">
+    <div class="logo-wrapper clearfix fivecol">
+      <a href="/">
+        <h1 class="logo"><%=Application["smallurl"] %></h1>
+        <h2>电影天堂在线<strong> 影视 </strong>播放平台</h2>
+      </a>
+    </div>
+    <div class="promoted-header sevencol">
+    <a href="<%=Application["url"]%>/"  height="90"></a>
+    </div>
+  </div>  
+  <div class="row clearfix">
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+<div class="demo-stories threecol clearfix index-demo">
+      <h2><i class="demo-wall"></i>值得关注<i class="more-arrow"></i></h2>
+      <asp:Repeater ID="WallRP" runat="server">
+        <ItemTemplate>
+        <a class="demo-story" href="/movie/<%#Eval("id") %>.html"  target="_blank">
+            <img class="article-image" src="<%#DataBase.DbHelper.getImageUrl(Eval("body").ToString()) %>">
+            <div class="demo-story-info">
+                <h1 class="article-title"><%#Eval("title").ToString().Length > 15 ? Eval("title").ToString().Remove(15) : Eval("title")%><span class="faux-link">详情 <i class="link-arrow"></i></span></h1>
+                <p class="info"><%#DataBase.DbHelper.MyFormatnoHtml(Eval("zhaiyao").ToString()) %></p>
+            </div>
+      </a>
+        </ItemTemplate>
+      </asp:Repeater>
+    </div>
+  </div>
+  
+<aside class="pw-news-wrapper">
+  <div><h2><i class="news"></i> <%=Application["smallUrl"]%> 用户关注排行榜 <i class="more-arrow"></i></h2></div>
+	
+
+  <asp:Repeater ID="kuaixun" runat="server">
+  <ItemTemplate>
+  <div><a class="pw-news" target="_blank" href="news<%#Eval("id") %>">    
+    <strong><%#Eval("title").ToString().Length > 30 ? Eval("title").ToString().Remove(30) : Eval("title").ToString()%></strong>
+    <time pubdate="pubdate"><%#times()%></time>
+  </a></div>
+  </ItemTemplate>
+  </asp:Repeater>
+</aside>  
+</main>
+    <script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F66f350c848d388da67a308b57313827b' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+
+        <!--站长统计-->
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1257649957'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257649957%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多啦影院", "DoraMovie\多啦影院.csproj", "{97209791-E125-4676-B8F0-BE3684085549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetMovieLoader", "NetMovieLoader\NetMovieLoader.csproj", "{1A0B23B2-65CC-4F34-90D3-B4ECA09EFEE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97209791-E125-4676-B8F0-BE3684085549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97209791-E125-4676-B8F0-BE3684085549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97209791-E125-4676-B8F0-BE3684085549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97209791-E125-4676-B8F0-BE3684085549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A0B23B2-65CC-4F34-90D3-B4ECA09EFEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0B23B2-65CC-4F34-90D3-B4ECA09EFEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A0B23B2-65CC-4F34-90D3-B4ECA09EFEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A0B23B2-65CC-4F34-90D3-B4ECA09EFEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

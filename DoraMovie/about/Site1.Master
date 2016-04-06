@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="DoraMovie.about.Site1" %>
+<%@ Register TagPrefix="ascx" TagName="foot" Src="~/PageFoot.ascx" %>
+<!doctype html>
+<html>
+<head>
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+        - 关于我们</title>
+    <link href="../css/css.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header class="global-nav">
+            <nav class="nav-categories">
+                <asp:Repeater ID="daohang" runat="server">
+                    <ItemTemplate>
+                        <a href="/class-<%#Eval("name") %>">
+                            <%#Eval("name") %></a>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </nav>
+           
+            <div class="login-wrapper">
+                <%if (Request.Cookies["userCookie"] == null) {%>
+                <strong><i class="user"></i>帐户</strong> <span class="nav-dropdown"><a class="news-user-login" href="../user/Login.aspx"><i class="login"></i>登录 </a></span>
+                <%} else { %>
+                <strong><i class="user"></i><a href="../user/index.aspx">
+                    <%=Request.Cookies["userCookie"]["name"] %></a></strong>
+                <%} %>
+            </div>
+        </header>
+        
+        <main class="layout-news">
+
+   <div class="row clearfix">
+    <div class="logo-wrapper clearfix fivecol">
+      <a href="/">
+        <h1 class="logo"><%=Application["smallUrl"]%></h1>
+        <h2>关注<strong> 互联网 </strong>创新科技资讯媒体平台</h2>
+      </a>
+    </div>
+    <div class="promoted-header sevencol">
+    <a href="<%=Application["url"]%>/"  height="90"></a>
+    </div>
+  </div>  
+  <div class="row clearfix">
+    <div class="welcome-bar twelvecol">
+      <i class="slash"></i>
+      <a href="http://<%=Application["url"]%>/">首页</a> <span class="sep">&raquo;</span> 关于我们
+    </div>
+  </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        </main>
+        <ascx:foot ID="foot" runat="server" />
+    </div>
+    </form>
+</body>
+</html>

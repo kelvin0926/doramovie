@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script>
+        var loadCount = 0;
+        function open_without_referrer(link) {
+            var iframe = document.createElement('iframe');
+            iframe.src = 'javascript:"<script>window.location.replace(\'' + link + '\')<\/script>"';
+            iframe.width = "100%";
+            iframe.frameBorder = 0;
+            iframe.scrolling = "no";
+            if (iframe.attachEvent) {
+                iframe.attachEvent("onload", function () {
+                    //alert("Local iframe is now loaded.");
+                });
+            } else {
+                iframe.onload = function () {
+                    //alert("Local iframe is now loaded2.");
+                    loadCount++;
+                    iframe.height = window.innerHeight ;
+                    var url = GetQueryString("s");
+
+                    if (url.indexOf("v.qq.com") > -1 ||
+                        url.indexOf("yuedisk.duapp.com") > -1 ||
+                        url.indexOf("api.wechatpt.com") > -1 ||
+                        url.indexOf("yuedisk.com") > -1 ||
+                        url.indexOf("letvyun") > -1 ||
+						url.indexOf("ydisks.duapp.com")>-1 ||
+						url.indexOf("player.pptv.com")>-1) {
+                        if (loadCount == 1)
+                            document.getElementById("prepareDiv").style.display = "none";
+                    } else {
+                        if (loadCount == 2)
+                            document.getElementById("prepareDiv").style.display = "none";
+                    }
+                };
+            }
+            document.body.appendChild(iframe);
+        }
+        window.onload = function () {
+            var url = GetQueryString("s");
+            open_without_referrer("http://" + url);
+            var preDiv = document.getElementById("prepareDiv");
+            var padding =(window.innerHeight-preDiv.clientHeight)/2
+            preDiv.style.padding = padding + "px 0";
+
+        }
+        function GetQueryString(name) {
+            if (window.location.href.indexOf("?s=") > -1) {
+                return window.location.href.substring(window.location.href.indexOf("?s=") + 3);
+            }
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</head>
+<body>
+    <div id="prepareDiv" style=" text-align: center; color: white;
+        background: black;">
+        视频加载中，请稍候...<br />
+        部分资源加载速度较慢，<br />
+        请耐心等候....<br />
+        微信关注“<span style="color:red;">tttv77</span>”，观免费大片
+    </div>
+</body>
+</html>

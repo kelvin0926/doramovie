@@ -1,0 +1,4 @@
+﻿.slider{display:none}/*用于获取更佳体验*/
+.focus span{width:10px;height:10px;margin-right:10px;border-radius:50%;background:#666;font-size:0}
+.focus span.current{background:#fff}
+.focus label{color:white;padding:0px 20px;}
